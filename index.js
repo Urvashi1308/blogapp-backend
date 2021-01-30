@@ -3,7 +3,7 @@ const express=require('express');
 const routes= require('./routes/routes');
 const bodyparser=require('body-parser');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 //create express app
 const app=express();
 
@@ -12,6 +12,7 @@ app.use(bodyparser.urlencoded({extended : false}));
 //parse application json
 app.use(bodyparser.json());
 app.use('/api',routes);
+app.use(cors());
 
 mongoose.Promise=global.Promise;
 const db = process.env.MONGO_URI;
